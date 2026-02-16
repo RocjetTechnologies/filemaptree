@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "filemaptree"
+version = "0.1.0"
+description = "Deterministic ASCII file tree renderer"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Caleb Wodi", email = "calebwodi33@gmail.com"}
+]
+dependencies = []
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+]
+
+[project.urls]
+Homepage = "https://github.com/calchiwo/filemaptree"
+Repository = "https://github.com/calchiwo/filemaptree.git"
+"Bug tracker" = "https://github.com/calchiwo/filemaptree/issues"
+
+[project.scripts]
+filemaptree = "filemaptree.cli:main"
