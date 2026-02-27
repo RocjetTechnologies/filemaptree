@@ -2,57 +2,9 @@
 
 Deterministic ASCII file tree renderer.
 
-## Version
-
-0.1.0
-
 ## Purpose
 
 `filemaptree` renders a deterministic ASCII file tree. It is a single-purpose tool designed for clean, stable, and reusable directory visualization.
-
-## Installation
-
-```bash
-pip install -e .
-```
-
-## Usage
-
-### Basic usage
-
-```bash
-# Current directory
-python -m filemaptree.main .
-
-# Specific path
-python -m filemaptree.main /path/to/directory
-```
-
-### Depth control
-
-```bash
-# Show only root
-python -m filemaptree.main . --depth 0
-
-# Show root + immediate children
-python -m filemaptree.main . --depth 1
-
-# Show root + two levels
-python -m filemaptree.main . --depth 2
-```
-
-### Ignore patterns
-
-```bash
-# Ignore specific names (exact match)
-python -m filemaptree.main . --ignore __pycache__,node_modules,.git
-```
-
-### Combined options
-
-```bash
-python -m filemaptree.main /path/to/repo --depth 3 --ignore .git,node_modules
-```
 
 ## Features
 
@@ -60,7 +12,82 @@ python -m filemaptree.main /path/to/repo --depth 3 --ignore .git,node_modules
 - **Depth control**: Limit tree depth with `--depth N`
 - **Ignore patterns**: Skip specific directory/file names with `--ignore`
 - **ASCII rendering**: Clean tree structure using `├──`, `└──`, `│`
-- **Cross-platform**: Stable output across operating systems
+- **Cross-platform**: Stable output across Linux, macOS, Windows
+
+## Installation
+
+```bash
+pip install filemaptree
+```
+
+## Usage
+
+### Basic usage
+
+```bash
+filemaptree
+```
+
+Or current directory,
+
+```bash
+filemaptree .
+```
+
+## Output example
+
+```
+filemaptree
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── main.py
+│   ├── renderer.py
+│   └── walker.py
+├── .gitignore
+├── LICENSE
+├── pyproject.toml
+└── README.md
+```
+
+### Specific path
+
+```bash
+filemaptree /path/to/directory
+```
+
+### Depth control
+
+Show only root:
+
+```bash
+filemaptree --depth 0
+```
+
+Show root + immediate children:
+
+```bash
+filemaptree --depth 1
+```
+
+Show root + two levels:
+
+```bash
+filemaptree --depth 2
+```
+
+### Ignore patterns
+
+Ignore specific names:
+
+```bash
+filemaptree --ignore __pycache__,node_modules,.git
+```
+
+### Combined options
+
+```bash
+filemaptree /path/to/directory --depth 3 --ignore .git,node_modules
+```
 
 ## Architecture
 
@@ -73,31 +100,7 @@ filemaptree/
 └── renderer.py    # ASCII tree rendering
 ```
 
-### Separation of concerns
-
-- **cli.py**: Parses arguments, validates paths, orchestrates flow
-- **walker.py**: Traverses filesystem, applies filters, builds Node tree
-- **renderer.py**: Converts Node tree to ASCII output
-
-## Output example
-
-```
-filemaptree
-├── __init__.py
-├── cli.py
-├── main.py
-├── renderer.py
-└── walker.py
-```
-
-## Design principles
-
-- Single-purpose tool
-- Minimal and precise
-- No feature creep
-- Deterministic output
-- Clean separation of concerns
-- Production-ready code
+## License
 
 MIT
 
